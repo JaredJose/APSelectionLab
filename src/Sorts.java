@@ -127,18 +127,24 @@ public class Sorts
     }
     
     private int[] SelectionSort() {
+    	//Iterate through list at each index, one less than length
     	for(int i = 0; i < slist.length - 1; i++) {
     		int index = i;
+    		
+    		//Secondary iteration looks for next lowest value in the array
     		for(int j = i + 1; j < slist.length; j++) {
+    			//finding lowest value and storing index
     			if(slist[j] < slist[index]) {
-    				index = j;
+    				index = j; //changes index of lowest found value
     			}
-    			this.scompares++;
+    			this.scompares++; //compare counter
     		}
+    		
+    		//Swapping the lowest value into the current index
     		int lowNum = slist[index];
     		slist[index] = slist[i];
     		slist[i] = lowNum;
-    		this.sswaps++;
+    		this.sswaps++; //swaps counter
     	}
     	return slist;
     }
