@@ -206,5 +206,20 @@ public class CircleQueue
     
   } 
   
+  /*
+   * Performs selection sort based off of the contents of object
+   */
+  public void selectionSort() {
+	  int length = getQueueLength();
+	  
+  }
+  
+  private int getQueueLength() {
+	  int count = 0;
+	  while(headNode.getNext() != null) {
+		  count++;
+	  }
+	  return count;
+  }
 }
 
