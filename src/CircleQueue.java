@@ -210,8 +210,7 @@ public class CircleQueue
    * Performs selection sort based off of the contents of object
    */
   public void selectionSort() {
-		//  int length = getQueueLength();
-	  	  System.out.println("Selection");
+	  	  System.out.println("Sorted via Selection Sort");
 		  LinkedList node1 = headNode;
 		  LinkedList node2 = headNode.getNext();
 		  LinkedList temp1 = node1;
@@ -237,52 +236,6 @@ public class CircleQueue
 			  temp1 = node1;
 			  node2 = node1.getNext();
 		  }
-  }
-  
-  /*
-   * Gets the length of the circle queue
-   */
-  private int getQueueLength() {
-	  int count = 1;
-	  LinkedList tempNode = new LinkedList(headNode);
-	  while(tempNode.getNext() != null) {
-		  tempNode = tempNode.getNext();
-		  count++;
-	  }
-	  System.out.println("Count: " + count + "\n");
-	  return count;
-  }
-  
-  /*
-   * Iterate through the queue to get to a specific index
-   */
-  private Object get(int index) {
-	  //System.out.println("\n\n");
-	  Object content = headNode.getObject();
-	  //System.out.println("Object: " + headNode);
-	  LinkedList tempNode = new LinkedList(headNode);
-	  for(int j = 0; j < index; j++) {
-		  tempNode = tempNode.getNext();
-		  //System.out.println(j);
-	  }
-	  if(tempNode != null)
-		  content = tempNode.getObject();
-	  return content;
-  }
-  
-  private void swap(int node1, int node2) {
-	  LinkedList temp = new LinkedList(headNode.getNode(node1));
-	  
-	  /*
-	  temp.setPrevNode(headNode.getNode(node1).getPrevious());
-	  temp.setNextNode(headNode.getNode(node1).getNext());
-	  */
-	  
-	  headNode.getNode(node1).setPrevNode(headNode.getNode(node2).getPrevious());
-	  headNode.getNode(node1).setNextNode(headNode.getNode(node2).getNext());
-	  
-	  headNode.getNode(node2).setPrevNode(temp.getPrevious());
-	  headNode.getNode(node2).setNextNode(temp.getNext());
   }
 }
 
