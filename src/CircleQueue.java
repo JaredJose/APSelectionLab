@@ -210,31 +210,33 @@ public class CircleQueue
    * Performs selection sort based off of the contents of object
    */
   public void selectionSort() {
-	  System.out.println("Beginning Selection Sort");
-	  //System.out.println(headNode.getObject().toString());
-	  System.out.println(get(0).toString());
-	  System.out.println(get(1).toString());
-	  System.out.println(get(2).toString());
-	  System.out.println(get(3).toString());
-	  System.out.println(get(4).toString());
-	  System.out.println(get(5).toString());
-	  int length = getQueueLength();
-  	
-  	  for(int i = 0; i < length - 1; i++) {
-  		  int index = i;
-  		
-  		  for(int j = i + 1; j < length; j++) {
-  			if(get(j).toString().compareToIgnoreCase(get(index).toString()) > 0) {
-  				System.out.println("Success");
-  				index = j;
-  			}
-  		}
-  		System.out.println("Swapping");
-  		System.out.print("Index: " + index);
-  		System.out.println(get(index).toString());
-  		System.out.println(get(i).toString());
-  		this.swap(index, i);
-  	}
+		//  int length = getQueueLength();
+	  	  System.out.println("Selection");
+		  LinkedList node1 = headNode;
+		  LinkedList node2 = headNode.getNext();
+		  LinkedList temp1 = node1;
+		  //LinkedList temp2 = node2;
+		  while(node1.getNext() != null) {
+			 
+			  while(node2!=null)
+			  {
+				  //temp1 = node1;
+				  if(node2.getObject().toString().compareToIgnoreCase(temp1.getObject().toString()) < 0)
+				  {
+					  temp1 = node2;
+					  //temp2 = temp2.getNext();
+				  }
+				  
+				  node2 = node2.getNext();
+			  }
+			  //instead of trying to change the connections between nodes just change the data the node stores
+			  Object hold = node1.getObject();
+			  node1.setObject(temp1.getObject());
+			  temp1.setObject(hold);
+			  node1 = node1.getNext();
+			  temp1 = node1;
+			  node2 = node1.getNext();
+		  }
   }
   
   /*
