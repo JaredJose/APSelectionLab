@@ -210,6 +210,14 @@ public class CircleQueue
    * Performs selection sort based off of the contents of object
    */
   public void selectionSort() {
+	  System.out.println("Beginning Selection Sort");
+	  //System.out.println(headNode.getObject().toString());
+	  System.out.println(get(0).toString());
+	  System.out.println(get(1).toString());
+	  System.out.println(get(2).toString());
+	  System.out.println(get(3).toString());
+	  System.out.println(get(4).toString());
+	  System.out.println(get(5).toString());
 	  int length = getQueueLength();
   	
   	  for(int i = 0; i < length - 1; i++) {
@@ -217,10 +225,14 @@ public class CircleQueue
   		
   		  for(int j = i + 1; j < length; j++) {
   			if(get(j).toString().compareToIgnoreCase(get(index).toString()) > 0) {
+  				System.out.println("Success");
   				index = j;
   			}
   		}
-  		
+  		System.out.println("Swapping");
+  		System.out.print("Index: " + index);
+  		System.out.println(get(index).toString());
+  		System.out.println(get(i).toString());
   		this.swap(index, i);
   	}
   }
@@ -229,10 +241,13 @@ public class CircleQueue
    * Gets the length of the circle queue
    */
   private int getQueueLength() {
-	  int count = 0;
-	  while(headNode.getNext() != null) {
+	  int count = 1;
+	  LinkedList tempNode = new LinkedList(headNode);
+	  while(tempNode.getNext() != null) {
+		  tempNode = tempNode.getNext();
 		  count++;
 	  }
+	  System.out.println("Count: " + count + "\n");
 	  return count;
   }
   
@@ -240,20 +255,26 @@ public class CircleQueue
    * Iterate through the queue to get to a specific index
    */
   private Object get(int index) {
-	  Object content;
-	  LinkedList tempNode = null;
+	  //System.out.println("\n\n");
+	  Object content = headNode.getObject();
+	  //System.out.println("Object: " + headNode);
+	  LinkedList tempNode = new LinkedList(headNode);
 	  for(int j = 0; j < index; j++) {
-		  tempNode = headNode.getNext();
+		  tempNode = tempNode.getNext();
+		  //System.out.println(j);
 	  }
-	  content = tempNode.getObject();
+	  if(tempNode != null)
+		  content = tempNode.getObject();
 	  return content;
   }
   
   private void swap(int node1, int node2) {
-	  LinkedList temp = null;
+	  LinkedList temp = new LinkedList(headNode.getNode(node1));
 	  
+	  /*
 	  temp.setPrevNode(headNode.getNode(node1).getPrevious());
 	  temp.setNextNode(headNode.getNode(node1).getNext());
+	  */
 	  
 	  headNode.getNode(node1).setPrevNode(headNode.getNode(node2).getPrevious());
 	  headNode.getNode(node1).setNextNode(headNode.getNode(node2).getNext());

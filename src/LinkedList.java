@@ -6,7 +6,7 @@
 
 public class LinkedList
 {
-   private Object opaqueObject;
+   private Object opaqueObject = null;
    private LinkedList prevNode;
    private LinkedList nextNode;
 
