@@ -211,15 +211,44 @@ public class CircleQueue
    */
   public void selectionSort() {
 	  int length = getQueueLength();
-	  
+  	
+  	  for(int i = 0; i < length - 1; i++) {
+  		  int index = i;
+  		
+  		  for(int j = i + 1; j < length; j++) {
+  			if(get(j).compareToIgnoreCase(get(index)) > 0) {
+  				index = j;
+  			}
+  		}
+  		
+  		/*
+  		 * Where we insert
+  		 */
+  	}
   }
   
+  /*
+   * Gets the length of the circle queue
+   */
   private int getQueueLength() {
 	  int count = 0;
 	  while(headNode.getNext() != null) {
 		  count++;
 	  }
 	  return count;
+  }
+  
+  /*
+   * Iterate through the queue to get to a specific index
+   */
+  private String get(int index) {
+	  String content;
+	  LinkedList tempNode = null;
+	  for(int j = 0; j < index; j++) {
+		  tempNode = headNode.getNext();
+	  }
+	  content = (String) tempNode.getObject();
+	  return content;
   }
 }
 
