@@ -95,4 +95,12 @@ public class LinkedList
     return nextNode;
   }
   
+  public LinkedList getNode(int index) {
+	  LinkedList list = this;
+	  for(int j = 0; j < index; j++) {
+		  list = list.getNext();
+	  }
+	  return list;
+  }
+  
 }

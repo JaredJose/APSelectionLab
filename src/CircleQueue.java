@@ -216,14 +216,12 @@ public class CircleQueue
   		  int index = i;
   		
   		  for(int j = i + 1; j < length; j++) {
-  			if(get(j).compareToIgnoreCase(get(index)) > 0) {
+  			if(get(j).toString().compareToIgnoreCase(get(index).toString()) > 0) {
   				index = j;
   			}
   		}
   		
-  		/*
-  		 * Where we insert
-  		 */
+  		this.swap(index, i);
   	}
   }
   
@@ -241,14 +239,27 @@ public class CircleQueue
   /*
    * Iterate through the queue to get to a specific index
    */
-  private String get(int index) {
-	  String content;
+  private Object get(int index) {
+	  Object content;
 	  LinkedList tempNode = null;
 	  for(int j = 0; j < index; j++) {
 		  tempNode = headNode.getNext();
 	  }
-	  content = (String) tempNode.getObject();
+	  content = tempNode.getObject();
 	  return content;
+  }
+  
+  private void swap(int node1, int node2) {
+	  LinkedList temp = null;
+	  
+	  temp.setPrevNode(headNode.getNode(node1).getPrevious());
+	  temp.setNextNode(headNode.getNode(node1).getNext());
+	  
+	  headNode.getNode(node1).setPrevNode(headNode.getNode(node2).getPrevious());
+	  headNode.getNode(node1).setNextNode(headNode.getNode(node2).getNext());
+	  
+	  headNode.getNode(node2).setPrevNode(temp.getPrevious());
+	  headNode.getNode(node2).setNextNode(temp.getNext());
   }
 }
 
