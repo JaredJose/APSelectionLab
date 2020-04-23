@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class CircleQueueAL 
 {
 	private int front, rear, index;
-	private ArrayList<Object> list = new ArrayList<Object>();
+	private static ArrayList<Object> list = new ArrayList<Object>();
 	
 	public CircleQueueAL()
 	{
@@ -95,19 +95,75 @@ public class CircleQueueAL
             if(front == -1)
             	front = rear;
             rear = (rear + 1) % list.size();
+            
+            
+        else if (rear == list.size()-1 && front != 0) 
+	    { 
+	        rear = 0; 
+	        list.set(rear, opaqueObject); 
+	    } 	  
            */
             
         //}
             //bruh
 		
+		//Jared Code
 		list.add(opaqueObject); //simply add the object to end of list
 		rear++; //rear keeps track of total members added to the list (used to reference last element)
+		
+		/*
+	    if (front == -1)
+	    { 
+	        front = 0; 
+	        rear = 0; 
+	        list.add(opaqueObject); 
+	    } 
+	    else if (rear == list.size()-1 && front != 0) 
+	    { 
+	        rear = 0; 
+	        list.set(rear, opaqueObject); 
+	    } 	  
+	    else
+	    { 
+	        rear++; 
+	        list.add(opaqueObject); 
+	    } 
+	    */
+	    
 	}
 	
 	//To make iterating through queue easier using getNext and getPrevious
 	public void setIndex(int index) {
 		this.index = index;
 	}
+	
+	
+	public Object dequeue() 
+    { 
+		Object hold = null;
+        if (front == -1) //If the list is empty don't do anything
+        { 
+            System.out.println("List empty"); 
+            
+        } 
+   
+        // Deque has only one element 
+        if (front == rear) 
+        { 
+        	hold = list.get(0);
+        	list.remove(0);//Remove 0 index 
+            front = -1; //Set all front and rear to -1 to note list has been deleted completely
+            rear = -1; 
+        } 
+        else
+        {
+        	hold = list.get(front);
+        	list.remove(front);
+            rear = rear - 1; 
+        }
+        
+        return hold;
+    } 
 	
 	public String toString()
 	{
@@ -172,6 +228,16 @@ public class CircleQueueAL
 		System.out.println(trial.getPrevious().toString());
 		System.out.println(trial.getPrevious().toString());
 		System.out.println();
+		
+		System.out.println("Delete rear test");
+		System.out.println("Deleted" + trial.dequeue().toString());
+		System.out.println("Deleted" + trial.dequeue().toString() + "\n");
+		
+		System.out.println("Remaining List:");
+		for(int x = 0; x < list.size(); x++)
+		{
+			System.out.println(trial.getObject(x).toString());
+		}
 			
 	}
 }
