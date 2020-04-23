@@ -9,8 +9,8 @@ public class CircleQueueAL
 	{
 		//I set the values equal to -1 because if they were 0 that would mean there was 1 object 
 		//already in the arraylist
-		front = -1;
-		rear = 0;
+		front = 0; //front should always be at zero, since [0] should be front element no matter what (jared)
+		rear = -1; //will get incremented to 0 when first element is added
 		index = 0;
 	}
 	
@@ -34,30 +34,41 @@ public class CircleQueueAL
 	    	return list.get(index);
 	}
 	 
-	public Object getObject()
+	public Object getObject(int index)
 	{
-	    if (index == list.size() + 1 || index < 0)
-	  	  return null;
-	    else
-	      return list.get(index);
+		//prevents crash if list is empty
+		if(list.size() == 0) {
+			return null;
+		}
+		else {
+			//prevents indexing of illegal index (beyond edge of array or negative index)
+		    if (index == list.size() + 1 || index < 0)
+		  	  return null;
+		    else
+		      return list.get(index);
+		}
 	}
 	
-	public void setNext()
+	public Object getNext()
 	{
-		index = index + 1;
-		
+		index++;
+
 		// never let currentNode be null, wrap to head
-		if (index == list.size() + 1 || index > 0)
+		if (index == list.size() || index < 0)
 			index = front;
+		
+		return this.getObject(index);
 	}
 	
-	public void setPrevious()
+	public Object getPrevious()
 	{
-		index = index - 1;
+		index--;
 		
 		// never let currentNode be null, wrap to head
-		if (index == list.size() + 1 || index < 0)
+		if (index == list.size() || index < 0)
 			index = rear;
+		
+		return this.getObject(index);
 	}
 	
 	public void add(Object opaqueObject)
@@ -71,13 +82,23 @@ public class CircleQueueAL
 		//else 
 		//{
 			
+		/* Andrei Code
             list.set(rear, opaqueObject);
             if(front == -1)
             	front = rear;
             rear = (rear + 1) % list.size();
-           
+           */
+            
         //}
             //bruh
+		
+		list.add(opaqueObject);
+		rear++;
+	}
+	
+	//To make iterating through queue easier using getNext and getPrevious
+	public void setIndex(int index) {
+		this.index = index;
 	}
 	
 	public String toString()
@@ -104,5 +125,45 @@ public class CircleQueueAL
 	
 		System.out.println(trial.toString());
 	
+	}
+	
+	public static void main(String[] args) {
+		CircleQueueAL trial = new CircleQueueAL();
+		
+		trial.add(new Cupcakes("Red", 4, "Red Velvet"));
+		trial.add(new Cupcakes("Blue", 5, "Chocolate"));
+		trial.add(new Cupcakes("Green", 10, "Vanilla"));
+		trial.add(new Cupcakes("Yellow", 1, "Funfetti"));
+	
+		System.out.println("Print All Test");
+		System.out.println(trial.toString() + "\n");
+		
+		System.out.println("Print First Test");
+		System.out.println(trial.getFirstObject().toString() + "\n");
+		
+		System.out.println("Print Last Test");
+		System.out.println(trial.getLastObject().toString() + "\n");
+		
+		System.out.println("Print 2nd Element Test");
+		System.out.println(trial.getObject(2).toString() + "\n");
+		
+		System.out.println("Get Next Test");
+		trial.setIndex(0);
+		System.out.println(trial.getFirstObject().toString());
+		System.out.println(trial.getNext().toString());
+		System.out.println(trial.getNext().toString());
+		System.out.println(trial.getNext().toString());
+		System.out.println(trial.getNext().toString());
+		System.out.println();
+		
+		System.out.println("Get Previous Test");
+		trial.setIndex(3);
+		System.out.println(trial.getObject(3).toString());
+		System.out.println(trial.getPrevious().toString());
+		System.out.println(trial.getPrevious().toString());
+		System.out.println(trial.getPrevious().toString());
+		System.out.println(trial.getPrevious().toString());
+		System.out.println();
+			
 	}
 }
