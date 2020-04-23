@@ -77,6 +77,7 @@ public class CircleQueueAL
             rear = (rear + 1) % list.size();
            
         //}
+            //bruh
 	}
 	
 	public String toString()
