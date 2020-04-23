@@ -68,41 +68,37 @@ public class CircleQueueDriver {
 	
 	{			
 		//queue
-		  //CircleQueueDriver trial = new CircleQueueDriver();
-		CircleQueueAL trial = new CircleQueueAL();
-		
-		trial.add(new Cupcakes("red", 4, "Red Velvet"));
-		
-		System.out.println(trial.toString());
+		CircleQueueDriver trial = new CircleQueueDriver();
+	
 		
 		//add different types of objects to the same opaque queue
-		  //trial.addCQueue(Animal.animalData());
-		  //trial.addCQueue(Cupcakes.cupCakeData());
-		  //trial.addCQueue(Alphabet.alphabetData());
-		  //trial.addCQueue(Memory.memoryData());
+		trial.addCQueue(Animal.animalData());
+		trial.addCQueue(Cupcakes.cupCakeData());
+		trial.addCQueue(Alphabet.alphabetData());
+		trial.addCQueue(Memory.memoryData());
 		//display queue objects in queue order
-		  //trial.showCQueue();
+		trial.showCQueue();
 		
 		//sort queue objects by specific element within the object and display in sort order
 		
-		  //Animal.key = Animal.KeyType.name;
-		  //Cupcakes.key = Cupcakes.KeyType.flavor;
-		  //Alphabet.key = Alphabet.KeyType.letter;
-		  //Memory.key = Memory.KeyType.season;
-		  //trial.cqueue.selectionSort();
+		Animal.key = Animal.KeyType.name;
+		Cupcakes.key = Cupcakes.KeyType.flavor;
+		Alphabet.key = Alphabet.KeyType.letter;
+		Memory.key = Memory.KeyType.season;
+		trial.cqueue.selectionSort();
 		
-		  //trial.cqueue.selectionSort();
-		 //trial.showCQueue();
+		trial.cqueue.selectionSort();
+		trial.showCQueue();
 		
 		//display queue objects
-		  //Animal.key = Animal.KeyType.combo;
-		  //Cupcakes.key = Cupcakes.KeyType.combo;
-		  //Alphabet.key = Alphabet.KeyType.combo;
-		  //Memory.key = Memory.KeyType.combo;
-		  //trial.showCQueue();
+		Animal.key = Animal.KeyType.combo;
+		Cupcakes.key = Cupcakes.KeyType.combo;
+		Alphabet.key = Alphabet.KeyType.combo;
+		Memory.key = Memory.KeyType.combo;
+		trial.showCQueue();
 		
 		//delete queue objects
-		  //trial.deleteCQueue();
+		 trial.deleteCQueue();
 	}
 	
 }

@@ -70,6 +70,7 @@ public class CircleQueueAL
         //} 
 		//else 
 		//{
+			
             list.set(rear, opaqueObject);
             if(front == -1)
             	front = rear;
