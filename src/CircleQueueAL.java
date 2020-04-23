@@ -49,9 +49,13 @@ public class CircleQueueAL
 		}
 	}
 	
+	/*
+	 * getNext() will return next object within the list, relies on prior
+	 * initialization of index
+	 */
 	public Object getNext()
 	{
-		index++;
+		index++; //increment to move index to next
 
 		// never let currentNode be null, wrap to head
 		if (index == list.size() || index < 0)
@@ -60,9 +64,13 @@ public class CircleQueueAL
 		return this.getObject(index);
 	}
 	
+	/*
+	 * getPrevious() will return previous object within the list, relies on
+	 * prior initialization of index
+	 */
 	public Object getPrevious()
 	{
-		index--;
+		index--; //decrement to move index to previous 
 		
 		// never let currentNode be null, wrap to head
 		if (index == list.size() || index < 0)
@@ -83,7 +91,7 @@ public class CircleQueueAL
 		//{
 			
 		/* Andrei Code
-            list.set(rear, opaqueObject);
+            list.set(rear, opaqueObject); //would break because you can't set to an index that doesn't already exist
             if(front == -1)
             	front = rear;
             rear = (rear + 1) % list.size();
@@ -92,8 +100,8 @@ public class CircleQueueAL
         //}
             //bruh
 		
-		list.add(opaqueObject);
-		rear++;
+		list.add(opaqueObject); //simply add the object to end of list
+		rear++; //rear keeps track of total members added to the list (used to reference last element)
 	}
 	
 	//To make iterating through queue easier using getNext and getPrevious
