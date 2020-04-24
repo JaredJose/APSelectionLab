@@ -170,4 +170,22 @@ public class Sorts
         is.listType = ListType.Selection;
         System.out.println(is);
     }
+    
+    /*
+     * Between the bubble sort, insertion sort, and selection sort. The sort which
+     * routinely returns the lowest number of total operations (compares + swaps)
+     * is the insertion sort. Although the insertion sort completes a roughly equal number
+     * of swaps to the bubble sort, the insertion sort completes an extremely low
+     * number of total comparisons. This, in turn, allows it to minimize its total
+     * number of operations. The selection sort is subjectively the second best
+     * among the three sorts. The selection sort has a predetermined number of compares that
+     * it completes on each data set which causes its comparisons to be relatively high.
+     * The selection sort, however, makes up for this by having an extremely low number 
+     * of swap operations that it has to complete. The bubble sort is subjectively the worst
+     * sort as it takes the high number of compares from the selection sort and combines
+     * it with the high number of swaps of the insertion sort. This causes for an extremely
+     * high number of total operations that is usually almost double that of the insertion or 
+     * selection sort. These rankings are specifically in regards to this data set, with different
+     * sizes of data sets/different contents of data set these rankings could be drastically different.
+     */
 }
